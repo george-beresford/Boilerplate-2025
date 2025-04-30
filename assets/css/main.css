@@ -1,0 +1,334 @@
+:root {
+    --white: #FFFFFF;
+    --black: #121212;
+
+    --grey-100: hsl(from var(--white) h s 90%);
+    --grey-200: hsl(from var(--white) h s 80%);
+    --grey-300: hsl(from var(--white) h s 70%);
+
+    --accent: #521bf8;
+    --accent-hover: hsl(from var(--accent) h s 40%);
+    
+    --error: #d03e43;
+    --error-100: hsl(from var(--error) h s 95%);
+    --error-900: hsl(from var(--error) h s 30%);
+
+    --warning: #e09108;
+    --warning-100: hsl(from var(--warning) h s 95%);
+    --warning-900: hsl(from var(--warning) h s 30%);
+
+    --success: #1fb341;
+    --success-100: hsl(from var(--success) h s 95%);
+    --success-900: hsl(from var(--success) h s 30%);
+
+    --font-size: 18px;
+    --font-weight: normal;
+    --line-height: 1.6em;
+
+    --title-font-weight: 700;
+    --title-line-height: 1.2em;
+
+    --padding: 3.5rem;
+
+
+    --radius-xs: 3px;
+    --radius-md: 6px;
+    --radius-lg: 12px;
+
+    --transition: 0.15s all ease-in-out;
+    
+    --shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
+    --shadow-dk: 0 10px 15px 0 rgba(0, 0, 0, 0.2);
+}
+html, body {
+    font-size: 18px;
+    overflow-x: clip;
+}
+
+
+/** TYPOGRAPHY **/
+h1, .h1, h2, .h2,
+h3, .h3, h4, .h4,
+h5, .h5, h6, .h6 {
+    font-weight: var(--title-font-weight);
+    line-height: var(--title-line-height);
+    margin-bottom: 1rem;
+}
+h1, .h1 {
+    font-size: 3rem;
+}
+h2, .h2 {
+    font-size: 2.5rem;
+}
+h3, .h3 {
+    font-size: 2rem;
+}
+h4, .h4 {
+    font-size: 1.6rem;
+}
+h5, .h5 {
+    font-size: 1.3rem;
+}
+h6, .h6 {
+    font-size: 1.25rem;
+}
+p.lead {
+    font-size: 1.25rem;
+}
+p, q, ul, ol, li, a, pre, code, cite {
+    font-size: 1rem;
+    font-weight: var(--font-weight);
+    line-height: var(--line-height);
+    margin-bottom: 1rem;
+}
+.list-unstyled {
+    list-style: none;
+    padding-left: 0;
+    margin-left: 0;
+}
+
+/** LINKS **/
+a, button, input {
+    transition: var(--transition);
+}
+a:not(.btn) {
+    color: var(--accent);
+    text-decoration-color: currentColor;
+    text-decoration-line: underline;
+    text-underline-offset: 0.1em;
+    text-decoration-thickness: 0.1em;
+}
+
+
+/** BUTTONS & INPUTS **/
+.btn,
+.form-control {
+    -webkit-appearance: none;
+    appearance: none;
+    text-decoration: none;
+
+    font-size: 1rem;
+    line-height: var(--line-height);
+    font-weight: var(--font-weight);
+
+    padding: 0.75em 1em;
+    border-radius: var(--radius-md);
+
+    border: 2px solid var(--grey-200);
+    background: var(--white);
+    color: var(--black);
+}
+.form-control-sm,
+.btn.btn-sm {
+    font-size: 0.85rem;
+}
+.form-control-lg,
+.btn.btn-lg {
+    font-size: 1.25rem;
+}
+.btn {
+    border: none;
+    box-shadow: var(--shadow);
+}
+.btn:hover,
+.btn:active {
+    box-shadow: var(--shadow-dk);
+}
+.btn-pill,
+.form-control-pill {
+    border-radius: 99rem !important;
+    padding: .75em 1.5em !important;
+}
+input[disabled] {
+    color: var(--grey-300);
+    cursor: not-allowed;
+}
+
+input[disabled],
+input[readonly] {
+    border: 2px solid var(--grey-200);
+    background: var(--grey-100);
+}
+
+input[readonly] {
+    color: currentColor;
+    cursor: text;
+}
+input::placeholder {
+    color: var(--grey-300);
+    font-style: italic;
+    opacity: 1; /* Ensures consistent visibility across browsers */
+}
+
+.btn.btn-primary {
+    background: var(--accent);
+    color: var(--white);
+}
+
+.btn-primary:hover,
+.btn-primary:focus-visible,
+.btn-primary:active {
+    background: var(--accent-hover);
+}
+
+
+:focus-visible {
+    outline: 3px solid var(--black);
+    outline-offset: 5px;
+    box-shadow: 0 0 0 2px var(--white);
+}
+
+
+/** ERROR STATES **/
+.has-success .form-label,
+.has-success ::placeholder {
+    color: var(--success);
+}
+.has-success .form-control {
+    color: var(--success);
+    border-color: var(--success);
+    background: var(--success-100);
+}
+.has-success .form-control:focus,
+.has-success .form-control:active {
+    border-color: var(--success-900);
+}
+.has-warning .form-label,
+.has-warning ::placeholder {
+    color: var(--warning);
+}
+.has-warning .form-control {
+    color: var(--warning);
+    border-color: var(--warning);
+    background: var(--warning-100);
+}
+.has-warning .form-control:focus,
+.has-warning .form-control:active {
+    border-color: var(--warning-900);
+}
+.has-error .form-label,
+.has-error ::placeholder {
+    color: var(--error);
+}
+.has-error .form-control {
+    color: var(--error);
+    border-color: var(--error);
+    background: var(--error-100);
+}
+.has-error .form-control:focus,
+.has-error .form-control:active {
+    border-color: var(--error-900);
+}
+
+
+
+
+/** ROWS, MARGIN, SPACING **/
+.row > .col > *:last-child {
+    margin-bottom: 0;
+}
+.row + .row {
+    margin-top: calc(var(--padding) / 2);
+}
+
+
+/** PAGE SECTIONS **/
+section,
+footer {
+    padding: var(--padding) 0;
+}
+section {
+    background: var(--white);
+    color: var(--black);
+
+    border-top: 1px solid var(--black);
+}
+.hero {
+    background: var(--black);
+    color: var(--white);
+    height: 70svh;
+    text-align: center;
+}
+.call-to-action {
+    background: var(--accent);
+    color: var(--white);
+    height: 50svh;
+    text-align: center;
+}
+
+footer {
+    background: var(--black);
+    color: var(--grey-300);
+
+    border-top: 1px dashed var(--white);
+}
+
+
+/** HEADER & NAV **/
+#brand {
+    height: 4rem;
+}
+header {
+    padding: calc(var(--padding) / 2) 0;
+    background: var(--white);
+    color: var(--black);
+    position: sticky;
+    top: 0;
+
+    z-index: 909;
+}
+nav {
+    position: sticky;
+    top: 0;
+
+    z-index: 999;
+}
+
+
+
+
+
+
+
+
+/** CARDS **/
+.row > .col:not(:last-child) > .card {
+    margin-bottom: calc(var(--padding) / 2)
+}
+.card {
+    display: flex;
+    flex-direction: column;
+
+    box-shadow: var(--shadow);
+
+    border-radius: var(--radius-md);
+
+    isolation: isolate;
+    overflow: hidden;
+    overflow: clip;
+}
+.card-header,
+.card-body {
+    padding: calc(var(--padding) / 2);
+}
+.card-body {
+    display: flex;
+    flex-direction: column;
+}
+.card-header {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+
+    color: var(--white);
+    background: var(--black);
+}
+.card-body {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+
+    background: var(--white);
+}
+.card-body,
+.card-footer {
+    
+}
