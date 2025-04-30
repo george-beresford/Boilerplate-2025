@@ -36,10 +36,8 @@
                         </div>
                     </div>
 
-                    <div class="col-12 col-md-4 text-align-right">
-                        <a href="" title="">
-                            <img id="brand" src="" alt="" class="object-fit-contain">
-                        </a>
+                    <div class="col-12 col-md-4 place-content-end">
+                        <img id="footer-brand" src="assets/svg/logo.svg" alt="<?= $config['title']['brand_name']; ?>" class="object-fit-contain mb-4">
                         <p class="copyright">&copy; Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum distinctio harum repellendus minus soluta doloremque suscipit illum animi eligendi. Saepe et, ut modi obcaecati dolores quos delectus fugiat eveniet assumenda.</p>
                     </div>
                 </div>

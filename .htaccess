@@ -9,3 +9,6 @@ RewriteRule ^(.*)$ $1.php [L]
 # Redirect index.php to /
 RewriteCond %{THE_REQUEST} \s/index\.php [NC]
 RewriteRule ^index\.php$ / [R=301,L]
+
+# Set custom 404 error page
+ErrorDocument 404 /404.php

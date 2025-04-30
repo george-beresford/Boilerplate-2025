@@ -53,6 +53,7 @@ h5, .h5, h6, .h6 {
     font-weight: var(--title-font-weight);
     line-height: var(--title-line-height);
     margin-bottom: 1rem;
+    text-wrap: balance;
 }
 h1, .h1 {
     font-size: 3rem;
@@ -75,11 +76,12 @@ h6, .h6 {
 p.lead {
     font-size: 1.25rem;
 }
-p, q, ul, ol, li, a, pre, code, cite {
+p, q, ul, ol, li, pre, code, cite {
     font-size: 1rem;
     font-weight: var(--font-weight);
     line-height: var(--line-height);
     margin-bottom: 1rem;
+    text-wrap: pretty;
 }
 .list-unstyled {
     list-style: none;
@@ -228,6 +230,9 @@ icon {
     width: 1em;
     height: 1em;
 }
+icon svg {
+    line-height: 0;
+}
 icon svg * {
     fill: none;
     stroke: currentColor;
@@ -284,7 +289,8 @@ footer {
 
 
 /** HEADER & NAV **/
-#brand {
+#brand,
+#footer-brand {
     height: 4rem;
 }
 header {
@@ -301,13 +307,65 @@ nav {
     top: 0;
 
     z-index: 999;
+    background: var(--accent);
+}
+nav ul li {
+    flex: 1 1 auto;
+    margin: 0;
+}
+nav ul li a {
+    display: block;
+    padding: 0.5em 1em;
+    text-align: center;
+
+    color: var(--white) !important;
+    text-decoration: unset !important;
+}
+nav ul li a:hover,
+nav ul li a:focus,
+nav ul li a:active {
+    background: rgba(0, 0, 0, .1);
+}
+nav ul li a.current-page {
+    font-weight: bold;
+    background: rgba(0, 0, 0, .2);
 }
 
 
+/** HAMBURGER MENU **/
+[data-role="hamburger-menu"] {
+    display: block;
+    float: right;
+    font-size: 2rem;
+    width: 2em;
+    height: 2em;
+    padding: 0.5em;
+}
+[data-role="hamburger-menu"] icon {
+    position: relative;
+}
+[data-role="hamburger-menu"] icon svg {
+    position: absolute;
+}
+[data-role="hamburger-menu"] icon svg path {
+    will-change: d;
+    transition: var(--transition);
+}
+[data-action="open"] icon svg path:nth-child(1) { d: path('M4,12 24,12 44,12'); }
+[data-action="open"] icon svg path:nth-child(2) { d: path('M4,24 24,24 44,24'); opacity: 1; }
+[data-action="open"] icon svg path:nth-child(3) { d: path('M4,36 24,36 44,36'); }
 
+[data-action="open"]:hover icon svg path:nth-child(1) { d: path('M4,10 24,10 44,10'); }
+[data-action="open"]:hover icon svg path:nth-child(2) { d: path('M8,24 24,24 40,24'); opacity: 1; }
+[data-action="open"]:hover icon svg path:nth-child(3) { d: path('M4,38 24,38 44,38'); }
 
+[data-action="close"] icon svg path:nth-child(1) { d: path('M4,4 24,24 44,4'); }
+[data-action="close"] icon svg path:nth-child(2) { d: path('M24,24 24,24 24,24'); opacity: 0;}
+[data-action="close"] icon svg path:nth-child(3) { d: path('M4,44 24,24 44,44'); }
 
-
+[data-action="close"]:hover icon svg path:nth-child(1) { d: path('M8,8 24,24 40,8'); }
+[data-action="close"]:hover icon svg path:nth-child(2) { d: path('M24,24 24,24 24,24'); opacity: 0;}
+[data-action="close"]:hover icon svg path:nth-child(3) { d: path('M8,40 24,24 40,40'); }
 
 
 /** CARDS **/
@@ -349,5 +407,9 @@ nav {
 }
 .card-body,
 .card-footer {
-    
+    display: flex;
+}
+.card-footer {
+    flex-direction: row;
+    gap: 1rem;
 }

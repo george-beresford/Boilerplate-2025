@@ -4,9 +4,9 @@
     $config = [
         'language' => 'en',
         'url' => [
-            'protocol' => isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https://' : 'http://',
-            'domain' => $_SERVER['HTTP_HOST'],
-            'page' => get_current_page(),
+            'protocol'          => isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https://' : 'http://',
+            'domain'            => $_SERVER['HTTP_HOST'],
+            'page'              => get_current_page(),
         ],
         'meta' => [
             'charset'           => 'UTF-8',
@@ -20,7 +20,6 @@
             'favicon_16x16'     => '/assets/seo/favicon-16x16.png',
             'favicon_32x32'     => '/assets/seo/favicon-32x32.png',
             'apple_touch_icon'  => '/assets/seo/apple-touch-icon.png',
-            // 'manifest'          => '/assets/seo/site.webmanifest',
             'mask_icon'         => '/assets/seo/safari-pinned-tab.svg',
             'msapplication_tile_color'  => '#FFFFFF',
             'theme_color'               => '#FFFFFF',
@@ -153,7 +152,12 @@
     function get_current_page() {
         $uri = $_SERVER['REQUEST_URI'];
         $path = parse_url($uri, PHP_URL_PATH);
-        return basename($path, '.php');
+        $basename = basename($path);
+        if (empty($basename)) {
+            $basename = 'index.php';
+        }
+        // Ensure the extension is always included
+        return strpos($basename, '.') !== false ? $basename : $basename . '.php';
     }
 
     // Generate inline web manifest JSON

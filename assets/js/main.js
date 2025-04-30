@@ -7,13 +7,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if(!targetElement) { console.warn(targetId + " wasn't found in the DOM."); return; }
 
-        if (trigger.dataset.action === "will-open") {
-            trigger.dataset.action = "will-close";
+        if (trigger.dataset.action === "open") {
+            trigger.dataset.action = "close";
             trigger.setAttribute("title", "Expand hidden navigation menu");
             targetElement.classList.add("open");
             targetElement.classList.remove("close");
         } else {
-            trigger.dataset.action = "will-open";
+            trigger.dataset.action = "open";
             trigger.setAttribute("title", "Collapse visible navigation menu");
             targetElement.classList.add("close");
             targetElement.classList.remove("open");

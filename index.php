@@ -7,7 +7,7 @@
     <div class="container h-100 align-content-center">
         <div class="row">
             <div class="col">
-                <h1>Heading One</h1>
+                <h1>A modern boilerplate template built with PHP, JavaScript, and Bootstrap 5 for rapid web development.</h1>
                 <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
             </div>
         </div>
@@ -43,6 +43,7 @@
                         </div>
                         <div class="card-footer">
                             <a href="###" title="" class="btn btn-primary">Button</a>
+                            <a href="###" title="" class="btn btn-link place-self-end">Button Two</a>
                         </div>
                     </div>
                     
