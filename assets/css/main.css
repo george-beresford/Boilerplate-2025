@@ -221,6 +221,25 @@ input::placeholder {
 }
 
 
+/** ICONS **/
+icon {
+    display: block;
+    font-size: inherit;
+    width: 1em;
+    height: 1em;
+}
+icon svg * {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    vector-effect: non-scaling-stroke;
+}
+.btn icon {
+    margin-right: 0.5em;
+}
+
 
 
 /** ROWS, MARGIN, SPACING **/
