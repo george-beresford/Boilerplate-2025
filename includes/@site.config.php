@@ -1,6 +1,6 @@
 <?php
     // Site-wide configuration array
-    global $config;
+    global $config, $social;
     $config = [
         'language' => 'en',
         'url' => [
@@ -45,16 +45,25 @@
             'title'             => '',
             'description'       => '',
             'image'             => '/assets/seo/twitter-card.jpg',
-        ],
+        ]
     ];
-
-    global $config;
-
+    // Set defaults and duplicates after defining array
     $config['title']['formatted']           = get_page_title($config['title']['separator'], 'left');
     $config['open_graph']['title']          = get_page_title($config['title']['separator'], 'left');
     $config['open_graph']['description']    = $config['meta']['description'];
     $config['twitter']['title']             = get_page_title($config['title']['separator'], 'left');
     $config['twitter']['description']       = $config['meta']['description'];
+
+    // Define social media profile URLs
+    $social = [
+        // 'icon.svg'       => ['URL', 'Title', 'Target' _blank = true]
+        'facebook.svg'      => ['https://facebook.com/USERNAME', 'Like USERNAME on Facebook', true],
+        'messenger.svg'      => ['##', 'Message USERNAME on Messenger', true],
+        'instagram.svg'     => ['https://instagram.com/@USERNAME', 'Follow USERNAME on Instagram', true],
+        'threads.svg'       => ['https://threads.com/@USERNAME', 'Follow USERNAME on Threads', true],
+        'whatsapp.svg'       => ['##', 'Call USERNAME on WhatsApp', true],
+        'linkedin.svg'      => ['https://www.linkedin.com/company/USERNAME', 'Follow USERNAME on LinkedIn', true],
+    ];
 
     // Function to generate and display all meta tags to 2025 web standards
     function generate_meta_tags($debug = false) {

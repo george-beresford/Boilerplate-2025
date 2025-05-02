@@ -1,3 +1,9 @@
+@charset "UTF-8";
+* { font-variant-ligatures: none; }
+@-ms-viewport { width:device-width; }
+@-o-viewport { width:device-width; }
+@viewport { width:device-width; }
+
 :root {
     --white: #FFFFFF;
     --black: #121212;
@@ -231,6 +237,9 @@ icon {
     height: 1em;
 }
 icon svg {
+    display: block;
+    width: 1em;
+    height: 1em;
     line-height: 0;
 }
 icon svg * {
@@ -240,6 +249,15 @@ icon svg * {
     stroke-linecap: round;
     stroke-linejoin: round;
     vector-effect: non-scaling-stroke;
+    transition: var(--transition);
+}
+icon.solid-fill svg * {
+    fill: currentColor;
+    stroke: none;
+    stroke-width: unset;
+    stroke-linecap: unset;
+    stroke-linejoin: unset;
+    transition: var(--transition);
 }
 .btn icon {
     margin-right: 0.5em;
@@ -300,13 +318,13 @@ header {
     position: sticky;
     top: 0;
 
-    z-index: 909;
+    z-index: 999;
+    isolation: isolate;
 }
 nav {
-    position: sticky;
-    top: 0;
+    margin-top: calc(var(--padding) / 2);
+    margin-bottom: calc(-1 * var(--padding));
 
-    z-index: 999;
     background: var(--accent);
 }
 nav ul li {
@@ -329,6 +347,18 @@ nav ul li a:active {
 nav ul li a.current-page {
     font-weight: bold;
     background: rgba(0, 0, 0, .2);
+}
+
+
+/** SOCIAL MENU **/
+.social-menu {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+.social-menu li {
+    font-size: 1.5rem;
+    margin: 0;
 }
 
 

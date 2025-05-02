@@ -1,13 +1,32 @@
 <header>
     <div class="container">
-        <div class="row">
+        <div class="row align-items-center">
             <div class="col">
                 <a href="" title="<?= $config['title']['brand_name']; ?>">
                     <img id="brand" src="assets/svg/logo.svg" alt="<?= $config['title']['brand_name']; ?>" class="object-fit-contain">
                 </a>
             </div>
+            <div class="col">
+                <ul class="social-menu list-unstyled justify-content-end">
+                    <?php foreach($social as $icon => $link) {
+                        // Check $icon is an SVG file with .svg extension
+                        if (preg_match('/\.svg$/', $icon)) {
+                            $href = $link[0];
+                            $title = $link[1];
+                            $target = isset($link[2]) && $link[2] ? '_blank' : '_self';
+                            ?>
+                            <li>
+                                <a href="<?= $href; ?>" title="<?= $title; ?>" target="<?= $target; ?>">
+                                    <icon class="solid-fill"><?= file_get_contents(__DIR__.'/../assets/svg/icons/social/'.$icon); ?></icon>
+                                </a>
+                            </li>
+                            <?php
+                        }
+                    } ?>
+                </ul>
+            </div>
             <div class="col visible-xs visible-sm">
-                <a href="#hamburger-menu" data-role="hamburger-menu" data-action="open" title="Expand menu">
+                <a href="#hamburger-menu" data-role="hamburger-menu" data-action="open" title="Expand hidden navigation menu">
                     <span class="visually-hidden">Expand menu</span>
                     <icon>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
@@ -25,9 +44,8 @@
             <div class="row">
                 <div class="col">
                     <ul class="list-unstyled d-flex flex-column flex-lg-row justify-content-between">
-
                         <?php $pages = [
-                            // 'file.php'       => ['Text', 'Title', 'Target' ?? null]
+                            // 'file.php'       => ['Text', 'Title', 'Target' _blank = true]
                             'index.php'         => ['Home', 'Home', null],
                             'about-us.php'      => ['About Us', 'Learn more about us', null],
                             'what-we-do.php'    => ['Our Services', 'What we do', null],
