@@ -7,7 +7,7 @@
                 </a>
             </div>
             <div class="col">
-                <ul class="social-menu list-unstyled justify-content-end">
+                <ul class="social-menu list-unstyled align-right">
                     <?php foreach($social as $icon => $link) {
                         // Check $icon is an SVG file with .svg extension
                         if (preg_match('/\.svg$/', $icon)) {

@@ -36,8 +36,8 @@
                         </div>
                     </div>
 
-                    <div class="col-12 col-md-4 place-content-end">
-                        <div class="row justify-content-end">
+                    <div class="col-12 col-md-4 align-right">
+                        <div class="row">
                             <div class="col">
                                 <p><img id="footer-brand" src="assets/svg/logo.svg" alt="<?= $config['title']['brand_name']; ?>" class="object-fit-contain"></p>
                                 <p>Company Name is a trading name of Example Ltd.</p>
@@ -47,7 +47,7 @@
                         </div>
                         <div class="row">
                             <div class="col">
-                                <ul class="social-menu list-unstyled">
+                                <ul class="social-menu list-unstyled align-right">
                                     <?php foreach($social as $icon => $link) {
                                         // Check $icon is an SVG file with .svg extension
                                         if (preg_match('/\.svg$/', $icon)) {
