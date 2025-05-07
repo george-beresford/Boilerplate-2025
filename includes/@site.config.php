@@ -157,6 +157,20 @@
         }
     }
 
+    // Function to return site url
+    function get_site_url() {
+        global $config;
+        return $config['url']['protocol'].$config['url']['domain'];
+    }
+
+    // Function to create internal page links
+    function get_page_url($slug) {
+        global $config;
+        // Ensure $slug starts and ends with a single slash
+        $slug = '/'.trim($slug, '/').'/';
+        return $config['url']['protocol'].$config['url']['domain'].$slug;
+    }
+    
     // Function to get current page from current URL
     function get_current_page() {
         $uri = $_SERVER['REQUEST_URI'];

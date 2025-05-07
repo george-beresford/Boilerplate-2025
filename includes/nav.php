@@ -2,8 +2,8 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="col">
-                <a href="" title="<?= $config['title']['brand_name']; ?>">
-                    <img id="brand" src="assets/svg/logo.svg" alt="<?= $config['title']['brand_name']; ?>" class="object-fit-contain">
+                <a href="<?= get_site_url(); ?>/" title="<?= $config['title']['brand_name']; ?>">
+                    <img id="brand" src="<?= get_site_url(); ?>/assets/svg/logo.svg" alt="<?= $config['title']['brand_name']; ?>" class="object-fit-contain">
                 </a>
             </div>
             <div class="col">

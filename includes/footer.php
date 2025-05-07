@@ -39,7 +39,7 @@
                     <div class="col-12 col-md-4 align-right">
                         <div class="row">
                             <div class="col">
-                                <p><img id="footer-brand" src="assets/svg/logo.svg" alt="<?= $config['title']['brand_name']; ?>" class="object-fit-contain"></p>
+                                <p><img id="footer-brand" src="<?= get_site_url(); ?>/assets/svg/logo.svg" alt="<?= $config['title']['brand_name']; ?>" class="object-fit-contain"></p>
                                 <p>Company Name is a trading name of Example Ltd.</p>
                                 <p>Unit X, Example Street, Example City, Example Region, EX1 2MP, Country. Registered in Example Country. Company Number 12345678. VAT Number EX123456789</p>
                                 <p class="copyright">&copy; Copyright <?= date('Y'); ?>. All rights (and lefts) reserved.</p>

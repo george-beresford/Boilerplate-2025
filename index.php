@@ -1,5 +1,5 @@
 <?php
-    $config['title']['page_title'] = "Custom page title";
+    // $config['title']['page_title'] = "Custom page title";
     require_once(__DIR__.'/includes/@site.config.php');
 ?>
 <?php require __DIR__.'/includes/header.php'; ?>
@@ -13,7 +13,7 @@
         </div>
         <div class="row">
             <div class="col">
-                <a href="###" class="btn btn-primary btn-lg btn-pill" title="">Get access now</a>
+                <a href="<?= get_page_url('/page-slug/'); ?>" title="Page Title" class="btn btn-primary btn-lg btn-pill">Get access now</a>
             </div>
         </div>
     </div>
