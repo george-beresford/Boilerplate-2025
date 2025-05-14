@@ -6,14 +6,12 @@
                     <img id="brand" src="<?= get_site_url(); ?>/assets/svg/logo.svg" alt="<?= $config['title']['brand_name']; ?>" class="object-fit-contain">
                 </a>
             </div>
-            <div class="col">
+            <div class="col align-right  d-none d-lg-block">
                 <ul class="social-menu list-unstyled align-right">
-                    <?php foreach($social as $icon => $link) {
-                        // Check $icon is an SVG file with .svg extension
-                        if (preg_match('/\.svg$/', $icon)) {
-                            $href = $link[0];
-                            $title = $link[1];
-                            $target = isset($link[2]) && $link[2] ? '_blank' : '_self';
+                    <?php foreach ($social as $platform => $details) {
+                        if (count($details) === 5) {
+                            list($icon, $href, $title, $prettyLink, $targetBlank) = $details;
+                            $target = $targetBlank ? '_blank' : '_self';
                             ?>
                             <li>
                                 <a href="<?= $href; ?>" title="<?= $title; ?>" target="<?= $target; ?>">
@@ -25,7 +23,7 @@
                     } ?>
                 </ul>
             </div>
-            <div class="col visible-xs visible-sm">
+            <div class="col d-block d-lg-none">
                 <a href="#hamburger-menu" data-role="hamburger-menu" data-action="open" title="Expand hidden navigation menu">
                     <span class="visually-hidden">Expand menu</span>
                     <icon>
@@ -39,7 +37,7 @@
             </div>
         </div>
     </div>
-    <nav id="hamburger-menu">
+    <nav id="hamburger-menu" class="close">
         <div class="container">
             <div class="row">
                 <div class="col">
