@@ -1,14 +1,13 @@
 # Enable URL rewriting
 RewriteEngine On
 
-# Rewrite .php file extension to remove it
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_FILENAME}\.php -f
-RewriteRule ^(.*)$ $1.php [L]
+# Redirect HTTP to HTTPS
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-# Redirect index.php to /
-RewriteCond %{THE_REQUEST} \s/index\.php [NC]
-RewriteRule ^index\.php$ / [R=301,L]
+# Rewrite .php file extension to remove it
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule !.*\.php$ %{REQUEST_FILENAME}.php [QSA,L]
 
 # Set custom 404 error page
 ErrorDocument 404 /404.php
