@@ -51,18 +51,39 @@
     $config['title']['formatted']           = get_page_title($config['title']['separator'], 'left');
     $config['open_graph']['title']          = get_page_title($config['title']['separator'], 'left');
     $config['open_graph']['description']    = $config['meta']['description'];
+    $config['open_graph']['url']            = get_site_url().$config['url']['page'];
     $config['twitter']['title']             = get_page_title($config['title']['separator'], 'left');
     $config['twitter']['description']       = $config['meta']['description'];
 
+    // Define localbusiness @schema details
+    $schema = [
+        'telephone' => '+1 555-123-4567',
+        'email' => 'info@example.com',
+
+        'openingHours' => [
+            'Mo-Fr 09:00-18:00',
+            'Sa 10:00-14:00',
+        ],
+        
+        'streetAddress' => '123 Main Street',
+        'addressLocality' => 'Anytown',
+        'addressRegion' => 'State',
+        'postalCode' => '12345',
+        'addressCountry' => 'US',
+
+        'latitude' => 40.712776,
+        'longitude' => -74.005974
+    ];
+
     // Define social media profile URLs
     $social = [
-        // 'icon.svg'       => ['URL', 'Title', 'Target' _blank = true]
-        'facebook.svg'      => ['https://facebook.com/USERNAME', 'Like USERNAME on Facebook', true],
-        'messenger.svg'      => ['##', 'Message USERNAME on Messenger', true],
-        'instagram.svg'     => ['https://instagram.com/@USERNAME', 'Follow USERNAME on Instagram', true],
-        'threads.svg'       => ['https://threads.com/@USERNAME', 'Follow USERNAME on Threads', true],
-        'whatsapp.svg'       => ['##', 'Call USERNAME on WhatsApp', true],
-        'linkedin.svg'      => ['https://www.linkedin.com/company/USERNAME', 'Follow USERNAME on LinkedIn', true],
+        // 'Name' => ['icon.svg', 'URL', 'Title', 'Pretty Link', 'Target _blank = true]
+        'Facebook'      => ['facebook.svg', 'https://facebook.com/USERNAME', 'Like USERNAME on Facebook', 'Find us on Facebook', true],
+        'Messenger'     => ['messenger.svg', '##', 'Message USERNAME on Messenger', 'Message us on Messenger', true],
+        'Instagram'     => ['instagram.svg', 'https://instagram.com/@USERNAME', 'Follow @USERNAME on Instagram', 'Find us on Instagram', true],
+        'Threads'       => ['threads.svg', 'https://threads.com/@USERNAME', 'Follow @USERNAME on Threads', 'Find us on Threads', true],
+        'WhatsApp'      => ['whatsapp.svg', '##', 'Call USERNAME on WhatsApp', 'WhatsApp us', true],
+        'LinkedIn'      => ['linkedin.svg', 'https://www.linkedin.com/company/USERNAME', 'Follow USERNAME on LinkedIn', 'Find us on LinkedIn', true],
     ];
 
     // Function to generate and display all meta tags to 2025 web standards
@@ -70,6 +91,15 @@
         global $config;
 
         $metaTags = '<title>'.htmlspecialchars($config['title']['formatted'] ?? '').'</title>'.PHP_EOL;
+        $metaTags .= '<link rel="canonical" href="'.htmlspecialchars($config['url']['protocol'].$config['url']['domain'].'/'.$config['url']['page']).'">'.PHP_EOL;
+        $metaTags .= '<link rel="alternate" href="'.htmlspecialchars($config['url']['protocol'].$config['url']['domain'].'/'.$config['url']['page']).'" hreflang="en">'.PHP_EOL;
+        
+        if(empty($hide_page)) {
+            $metaTags .= '<meta name="robots" content="index, follow">'.PHP_EOL;
+        } else {
+            $metaTags .= '<meta name="robots" content="noindex, nofollow">'.PHP_EOL;
+        }
+
         $errors = [];
 
         // Helper function to validate required keys
@@ -135,6 +165,21 @@
         generate_web_manifest();
     }
 
+    // Function to return site url
+    function get_site_url() {
+        global $config;
+        return $config['url']['protocol'].$config['url']['domain'];
+    }
+
+    // Function to create internal page links
+    function get_page_url($slug) {
+        global $config;
+        // Ensure $slug starts and ends with a single slash
+        $slug = '/'.trim($slug, '/').'/';
+        return $config['url']['protocol'].$config['url']['domain'].$slug;
+    }
+
+
     // Function to format titles to combine Brand and Page Titles with separator
     function get_page_title($separator, $position = "left") {
         global $config;
@@ -157,20 +202,6 @@
         }
     }
 
-    // Function to return site url
-    function get_site_url() {
-        global $config;
-        return $config['url']['protocol'].$config['url']['domain'];
-    }
-
-    // Function to create internal page links
-    function get_page_url($slug) {
-        global $config;
-        // Ensure $slug starts and ends with a single slash
-        $slug = '/'.trim($slug, '/').'/';
-        return $config['url']['protocol'].$config['url']['domain'].$slug;
-    }
-    
     // Function to get current page from current URL
     function get_current_page() {
         $uri = $_SERVER['REQUEST_URI'];
